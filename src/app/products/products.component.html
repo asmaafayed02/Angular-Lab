@@ -1,0 +1,47 @@
+<div class="card" style="width: 18rem;">
+    <img [src]="StoreLogo" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{StoreName | uppercase}}</h5>
+      <p class="card-text" *ngIf="Discount then noDiscount "></p> 
+      <ng-template #noDiscount>
+        <p class="card-text">We offer an explicit discount of: +{{Discount | percent}}</p> 
+
+      </ng-template>
+      <select>
+        <option *ngFor="let item of CategoryList" [value]="item.Name">{{item.Name}}</option>
+      </select>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+<input type="text" name="user" id="" [(ngModel)]="ClientName">{{ClientName}}
+<ng-template #table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of ProductList">
+        <th scope="row">{{ product.ID }}</th>
+        <td >{{product?.Name}}</td>
+        <td>{{product?.Price}}</td>
+        <td>{{product?.Quantity}}</td>
+        <td><img src={{product?.Img}} class="card-img-top" alt="..." width='20px'height='100px'></td>
+        <button (click)="toggleTab()">Buy</button>
+      </tr>
+   
+    </tbody>
+  </table>
+</ng-template>
+<ng-template #name>
+  <div>
+    Thanks for purchasing from our Store +{{ClientName}}
+  </div>
+</ng-template>
+<div *ngIf="IsPurshased then table else name">
+
+</div>
