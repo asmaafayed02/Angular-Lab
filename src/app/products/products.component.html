@@ -32,6 +32,7 @@
         <td>{{product?.Quantity}}</td>
         <td><img src={{product?.Img}} class="card-img-top" alt="..." width='20px'height='100px'></td>
         <button (click)="toggleTab()">Buy</button>
+        <button (click)="render(product.ID)">View</button>
       </tr>
    
     </tbody>
@@ -44,4 +45,12 @@
 </ng-template>
 <div *ngIf="IsPurshased then table else name">
 
+</div>
+<div class="card" style="width: 18rem;" >
+  <img src={{onep?.Img}} class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{onep?.Name}}</h5>
+    <p class="card-text">{{onep?.Price}}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
 </div>

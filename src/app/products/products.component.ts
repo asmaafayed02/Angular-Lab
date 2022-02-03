@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductServiceService } from '../services/product-service.service';
 import { DiscountOffers } from '../Shared Classes and types/Enums';
 import { ICategory, IProduct } from '../Shared Classes and types/Interfaces';
 
@@ -9,7 +10,7 @@ import { ICategory, IProduct } from '../Shared Classes and types/Interfaces';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { 
+  constructor(private  ProductServiceService: ProductServiceService) { 
     this.Discount = DiscountOffers['15%']
     this.StoreName ='card title'
     this.StoreLogo ='../../assets/ac12a8bc89b841deeedfd5f0cd6fc828.jpg'
@@ -17,6 +18,7 @@ export class ProductsComponent implements OnInit {
     this.CategoryList =[{"ID":1,'Name':"women"},{"ID":2,'Name':"men"}]
     this.ClientName ='client'
     this.IsPurshased =true
+    // this.onep={}
 
   }
   Discount:DiscountOffers ;
@@ -26,10 +28,24 @@ export class ProductsComponent implements OnInit {
   CategoryList:ICategory[];
   ClientName:string;
   IsPurshased:boolean;
+  onep:IProduct | null |undefined;
+
   ngOnInit(): void {
   }
   toggleTab(){
     this.IsPurshased = !this.IsPurshased;
   }
-
+  renderValues(){
+    // return this.ProductList = this.ProductServiceService.GetAllProducts()
+     this.ProductServiceService.GetAllProducts().subscribe(result => this.ProductList = result)
+  }
+  render(id: number) {
+    console.log(this.ProductServiceService.GetProductById(id));
+    
+   this.onep = this.ProductServiceService.GetProductById(id)
+   return this.onep
+  // console.log(this.onep);
+  
+  }
+  
 }
