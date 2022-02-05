@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IProduct } from '../Shared Classes and types/Interfaces';
@@ -15,16 +16,16 @@ export class ProductServiceService {
     {ID:4,Name:"product 4",Quantity:9,Price:19,Img:"../../assets/ac12a8bc89b841deeedfd5f0cd6fc828.jpg"}
   ]
 
-  productsArrayWatcher:BehaviorSubject<IProduct[]> = new BehaviorSubject(this.productArray);
-  productArrayListenr = this.productsArrayWatcher.asObservable();
+  // productsArrayWatcher:BehaviorSubject<IProduct[]> = new BehaviorSubject(this.productArray);
+  // productArrayListenr = this.productsArrayWatcher.asObservable();
   GetAllProducts(){
-    // return this.productArray;
-    return this.productArrayListenr;
+    return this.productArray;
+    // return this.productArrayListenr;
   }
-  addProduct(product:IProduct){
-    this.productArray.push(product);
-    this.productsArrayWatcher.next(this.productArray)
-  }
+  // addProduct(product:IProduct){
+  //   this.productArray.push(product);
+  //   this.productsArrayWatcher.next(this.productArray)
+  // }
   GetProductById(prdId:number){
     var product =this.productArray.find(({ID})=>{
       // console.log(ID,prdId);

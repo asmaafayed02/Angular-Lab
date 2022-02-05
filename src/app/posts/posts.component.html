@@ -1,0 +1,7 @@
+<p>posts works!</p>
+<div *ngFor='let post of posts'>
+    {{"id is:   " + post.id }}<br>
+    {{"title : " + post.title}}<br>
+    {{"body: " + post.body}}
+</div>
+<div *ngIf="error">{{ error }}</div>

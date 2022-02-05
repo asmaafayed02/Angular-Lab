@@ -3,7 +3,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductServiceService } from './services/product-service.service';
 
 @Component({
-  selector: 'myfirstapp-root ',
+  selector: 'myfirstapp-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -22,8 +22,8 @@ export class AppComponent {
     // console.log(this.RenderProuct?.render());
     
   }
-  add(){
-  //  const  product = {name: }
-    this.productService.addProduct({ID:5,Name:"product 5",Quantity:19,Price:190,Img:"../../assets/ac12a8bc89b841deeedfd5f0cd6fc828.jpg"})
-  }
+  // add(){
+  // //  const  product = {name: }
+  //   this.productService.addProduct({ID:5,Name:"product 5",Quantity:19,Price:190,Img:"../../assets/ac12a8bc89b841deeedfd5f0cd6fc828.jpg"})
+  // }
 }

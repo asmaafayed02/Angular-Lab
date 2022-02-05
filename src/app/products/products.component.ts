@@ -36,8 +36,8 @@ export class ProductsComponent implements OnInit {
     this.IsPurshased = !this.IsPurshased;
   }
   renderValues(){
-    // return this.ProductList = this.ProductServiceService.GetAllProducts()
-     this.ProductServiceService.GetAllProducts().subscribe(result => this.ProductList = result)
+    return this.ProductList = this.ProductServiceService.GetAllProducts()
+    //  this.ProductServiceService.GetAllProducts().subscribe(result => this.ProductList = result)
   }
   render(id: number) {
     console.log(this.ProductServiceService.GetProductById(id));

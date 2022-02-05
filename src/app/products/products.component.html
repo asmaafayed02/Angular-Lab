@@ -26,7 +26,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let product of ProductList">
-        <th scope="row">{{ product.ID }}</th>
+        <th scope="row">{{ product?.ID }}</th>
         <td >{{product?.Name}}</td>
         <td>{{product?.Price}}</td>
         <td>{{product?.Quantity}}</td>
@@ -38,6 +38,8 @@
     </tbody>
   </table>
 </ng-template>
+<button (click)='renderValues()'>display the data</button>
+
 <ng-template #name>
   <div>
     Thanks for purchasing from our Store +{{ClientName}}
