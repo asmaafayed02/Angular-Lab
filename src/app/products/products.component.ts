@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductServiceService } from '../services/product-service.service';
 import { DiscountOffers } from '../Shared Classes and types/Enums';
 import { ICategory, IProduct } from '../Shared Classes and types/Interfaces';
@@ -10,7 +11,7 @@ import { ICategory, IProduct } from '../Shared Classes and types/Interfaces';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private  ProductServiceService: ProductServiceService) { 
+  constructor(private  ProductServiceService: ProductServiceService,private router:Router,private activatedRoute: ActivatedRoute) { 
     this.Discount = DiscountOffers['15%']
     this.StoreName ='card title'
     this.StoreLogo ='../../assets/ac12a8bc89b841deeedfd5f0cd6fc828.jpg'
@@ -29,7 +30,7 @@ export class ProductsComponent implements OnInit {
   ClientName:string;
   IsPurshased:boolean;
   onep:IProduct | null |undefined;
-
+  
   ngOnInit(): void {
   }
   toggleTab(){
@@ -47,5 +48,11 @@ export class ProductsComponent implements OnInit {
   // console.log(this.onep);
   
   }
-  
+  goToDiscount(){
+    this.router.navigate(['discount'],{relativeTo:this.activatedRoute})
+
+  }
+  goToNoDiscount(){
+    this.router.navigate(['noDiscount'],{relativeTo:this.activatedRoute})
+  }
 }
