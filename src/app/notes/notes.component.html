@@ -1,0 +1,44 @@
+<p>notes works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form class="container" [formGroup]="notesForm" name="notesForm" novalidate >
+                <!-- {{registerForm.value | json}}  -->
+                  <div class="mb-3">
+                      <label for="formGroupExampleInput" class="form-label">username</label>
+                      <input type="text" class="form-control" formControlName="userName" pattern="^[A-Za-z]*$" [class.is-invalid]="userName?.invalid && userName?.touched" requiredname="username" id="formGroupExampleInput" placeholder="username">
+                      <div *ngIf="userName?.invalid &&  userName?.touched">
+                        <small class="text-danger" *ngIf="userName?.errors?.['required']">userName is required</small>
+                        <small class="text-danger" *ngIf="userName?.errors?.['pattern']">userName must be a valid userName without numbers</small>
+                        <small class="text-danger" *ngIf="userName?.errors?.['forbiddenUserName']">this user value is forbidden</small>
+                            <!-- {{email.errors|json}} -->
+                       </div>
+                    </div>
+                  
+                    <div class="form-group">
+                      <select class="custom-select" name="ddlTopics" formControlName="products">
+                          <option selected>
+                            -----please select option-----
+                          </option>
+              
+                          <option *ngFor="let product of productArray">
+                              {{product}}
+                          </option>
+                      </select>
+                      <!-- <small class="text-danger"[class.d-none]="topics?.valid || topics?.untouched" >select is required</small> -->
+              
+                  </div>
+                  <div class="form-group">
+                    <label  class="form-label">discount</label>
+                    <input type="number" [class.is-invalid]="discount?.invalid&& discount?.touched" formControlName="discount" class="form-control">
+                    <small [class.d-none]="discount?.valid ||discount?.untouched">discount is Required</small>
+                  </div>
+                  <div class="form-check mb-3">
+                    <input type="checkbox" (click)="setDiscount()" formControlName="subscribe" class="form-check-input">
+                    <label  class="form-check-label">Does this product containd discount</label>
+                </div>
+                  <button type="submit" class="btn btn-primary">register</button>
+                </form>
+        </div>
+    </div>
+</div>

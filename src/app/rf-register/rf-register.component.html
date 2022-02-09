@@ -1,0 +1,49 @@
+<p>rf-register works!</p>
+<h2 class="text-center">register</h2>
+<form class="container" [formGroup]="registerForm" name="registerForm" novalidate >
+  <!-- {{registerForm.value | json}}  -->
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">username</label>
+        <input type="text" class="form-control" formControlName="userName" pattern="^[A-Za-z]*$" [class.is-invalid]="userName?.invalid && userName?.touched" requiredname="username" id="formGroupExampleInput" placeholder="username">
+        <div *ngIf="userName?.invalid &&  userName?.touched">
+          <small class="text-danger" *ngIf="userName?.errors?.['required']">userName is required</small>
+          <small class="text-danger" *ngIf="userName?.errors?.['pattern']">userName must be a valid userName without numbers</small>
+              <!-- {{email.errors|json}} -->
+         </div>
+      </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" formControlName="email" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" [class.is-invalid]="email?.invalid && email?.touched"  required  name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div *ngIf="email?.errors &&  email?.touched">
+        <small class="text-danger" *ngIf="email?.errors?.['required']">email is required</small>
+        <small class="text-danger" *ngIf="email?.errors?.['pattern']">email must be a valid email pattern ex:ssfg@bnkl</small>
+            <!-- {{email.errors|json}} -->
+       </div>
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" formControlName="password"  name="password" [class.is-invalid]="password?.invalid && password?.touched"  id="exampleInputPassword1" required>
+      <small class="text-danger"  [class.d-none]="password?.valid || password?.untouched" >password is required</small>
+    </div> 
+    <div class="mb-3">
+        <label for="confirmPassward" class="form-label">confirm Password</label>
+        <input type="password" class="form-control" formControlName="confirmPassward" name="confirmPassward" [class.is-invalid]="confirmPassward?.invalid && confirmPassward?.touched"  id="confirmPassward" required>
+        <small class="text-danger" [class.d-none]="confirmPassward?.valid || confirmPassward?.untouched" >confirmPassward is required</small>
+        <small class="text-danger" *ngIf="registerForm.errors?.['mismatch']"> password and confirmPassward mismatch</small>
+      </div>
+      <div class="form-group">
+        <select class="custom-select" name="ddlTopics" formControlName="topics">
+            <option selected>
+              -----please select option-----
+            </option>
+
+            <option *ngFor="let media of medias">
+                {{media}}
+            </option>
+        </select>
+        <!-- <small class="text-danger"[class.d-none]="topics?.valid || topics?.untouched" >select is required</small> -->
+
+    </div>
+    <button type="submit" class="btn btn-primary">register</button>
+  </form>

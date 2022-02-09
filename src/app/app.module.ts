@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductServiceService } from './services/product-service.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
@@ -18,6 +18,8 @@ import { LoginComponent } from './login/login.component';
 import { DiscountProductsComponent } from './discount-products/discount-products.component';
 import { NoDiscountProductComponent } from './no-discount-product/no-discount-product.component';
 import { CommentsComponent } from './comments/comments.component';
+import { RfRegisterComponent } from './rf-register/rf-register.component';
+import { NotesComponent } from './notes/notes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,13 +34,16 @@ import { CommentsComponent } from './comments/comments.component';
     LoginComponent,
     DiscountProductsComponent,
     NoDiscountProductComponent,
-    CommentsComponent
+    CommentsComponent,
+    RfRegisterComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     ProductServiceService
